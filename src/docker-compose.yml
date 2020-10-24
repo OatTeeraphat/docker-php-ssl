@@ -7,7 +7,12 @@ services:
       restart: always
       build : ./
       volumes:
-        - ./www/:/var/www/
+        - ./www/:/var/www
+      environment:
+        - VIRTUAL_HOST=example.com
+        - VIRTUAL_ROOT=/var/www
+        - VIRTUAL_PORT=9000
+        - VIRTUAL_PROTO=fastcgi
       depends_on:
         - db
       expose:
